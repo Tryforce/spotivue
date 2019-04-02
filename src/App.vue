@@ -1,16 +1,23 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+  <v-app>
+    <v-navigation-drawer clipped app></v-navigation-drawer>
+    <v-toolbar clipped-left dark app color="primary">
+      <v-toolbar-title>Spotivue</v-toolbar-title>
+    </v-toolbar>
+    <v-content>
+      <v-container fluid>
+        <router-link to="/">Home</router-link> |
+        <router-link to="/about">About</router-link>
+        <router-view />
+      </v-container>
+    </v-content>
+    <v-footer app></v-footer>
+  </v-app>
 </template>
 
 <style>
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
