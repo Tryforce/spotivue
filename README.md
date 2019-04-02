@@ -1,4 +1,5 @@
 # spotivue
+<<<<<<< HEAD
 
 ## Project setup
 ```
@@ -32,3 +33,6 @@ npm run test:unit
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+Vue.js wrapper for Spotify API
+>>>>>>> f3eaf4c16308d47baa2ae4f6a254a8bed3b038ef
