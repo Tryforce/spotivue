@@ -1,24 +1,44 @@
-import Vue from "vue";
-import Router from "vue-router";
-import Home from "./views/Home.vue";
+import Vue from 'vue';
+import Router from 'vue-router';
+import store from '@/store';
+import Login from '@/components/Login.vue';
+import HelloWorld from '@/components/HelloWorld.vue';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   routes: [
     {
-      path: "/",
-      name: "home",
-      component: Home
+      path: '/',
+      name: 'Login',
+      component: Login
     },
     {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+      path: '/home',
+      name: 'HelloWorld',
+      component: HelloWorld
     }
   ]
 });
+
+router.beforeEach((to, from, next) => {
+  if (!to.meta.requiresAuth) {
+    next();
+    return;
+  }
+  if (!store.getters.isAuthenticated) {
+    next({ name: 'Login' });
+    return;
+  }
+  if (!to.meta.roles) {
+    next();
+    return;
+  }
+  // if (to.meta.roles.includes(store.getters.currentUser.role_id)) {
+  //   next();
+  //   return;
+  // }
+  next({ name: 'Login' });
+});
+
+export default router;
