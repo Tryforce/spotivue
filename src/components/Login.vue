@@ -7,11 +7,6 @@
             <v-toolbar-title>Login form</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-tooltip bottom>
-              <template v-slot:activator="{ on }">
-                <v-btn :href="source" icon large target="_blank" v-on="on">
-                  <v-icon large>code</v-icon>
-                </v-btn>
-              </template>
               <span>Source</span>
             </v-tooltip>
             <v-tooltip right>
@@ -48,7 +43,7 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn color="primary">Login</v-btn>
+            <v-btn color="primary" @click="login()">Login</v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -57,7 +52,25 @@
 </template>
 
 <script>
+import auth from '../services/api/auth';
 export default {
-  name: 'Login'
+  name: 'Login',
+  mounted() {
+    auth.getSpotifyCreds().then(resp => {
+      console.log(resp);
+    });
+  },
+  methods: {
+    login() {
+      this.$store
+        .dispatch('login', {
+          email: 'kylebaker17@gmail.com',
+          password: '1234'
+        })
+        .then(resp => {
+          console.log(resp);
+        });
+    }
+  }
 };
 </script>

@@ -1,22 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer
-      v-if="showDrawer"
-      :mini-variant="mini"
-      clipped
-      app
-    ></v-navigation-drawer>
-    <v-toolbar clipped-left dark app color="primary">
-      <v-toolbar-title>Spotivue</v-toolbar-title>
-    </v-toolbar>
-    <v-content>
-      <v-container fluid>
-        <!-- <router-link to="/">Home</router-link> | -->
-        <!-- <router-link to="/about">About</router-link> -->
-        <router-view />
-      </v-container>
-    </v-content>
-    <v-footer app></v-footer>
+    <router-view />
   </v-app>
 </template>
 
@@ -29,6 +13,11 @@ export default {
     mini: true,
     right: null
   }),
+  computed: {
+    isAuthenticated() {
+      return this.$store.getters.isLoggedIn;
+    }
+  },
   methods: {
     toggleDrawer() {
       if (this.showDrawer) {

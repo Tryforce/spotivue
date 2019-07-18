@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import store from '@/store';
 import Login from '@/components/Login.vue';
-import HelloWorld from '@/components/HelloWorld.vue';
+import Home from '@/components/Home.vue';
 
 Vue.use(Router);
 
@@ -15,8 +15,11 @@ const router = new Router({
     },
     {
       path: '/home',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'Home',
+      component: Home,
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 });
