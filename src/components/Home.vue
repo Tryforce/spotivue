@@ -2,11 +2,11 @@
   <v-app>
     <v-navigation-drawer
       app
-      :mini-variant="mini"
       v-if="showDrawer && isAuthenticated"
+      :mini-variant="mini"
       clipped
     ></v-navigation-drawer>
-    <v-toolbar app clipped-left dark v-if="isAuthenticated" color="primary">
+    <v-toolbar app clipped-left v-if="isAuthenticated" dark color="primary">
       <v-toolbar-title>Spotivue</v-toolbar-title>
     </v-toolbar>
     <v-content>
@@ -129,6 +129,7 @@ export default {
   methods: {
     test() {
       console.log('hey world');
+      console.log('hey');
     }
   }
 };
