@@ -3,10 +3,10 @@
     <v-navigation-drawer
       app
       :mini-variant="mini"
-      clipped
       v-if="showDrawer && isAuthenticated"
+      clipped
     ></v-navigation-drawer>
-    <v-toolbar app clipped-left dark color="primary" v-if="isAuthenticated">
+    <v-toolbar app clipped-left dark v-if="isAuthenticated" color="primary">
       <v-toolbar-title>Spotivue</v-toolbar-title>
     </v-toolbar>
     <v-content>
@@ -116,7 +116,7 @@
         </div>
       </v-container>
     </v-content>
-    <v-footer app v-if="isAuthenticated"></v-footer>
+    <v-footer v-if="isAuthenticated" app></v-footer>
   </v-app>
 </template>
 
@@ -125,6 +125,11 @@ export default {
   name: 'Home',
   props: {
     msg: String
+  },
+  methods: {
+    test() {
+      console.log('hey world');
+    }
   }
 };
 </script>
